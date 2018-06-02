@@ -1,0 +1,167 @@
+﻿@model Test.Models.TableExam
+
+@{
+    ViewBag.Title = "Edit";
+}
+@{
+    List<SelectListItem> listClass = new List<SelectListItem>();
+    listClass.Add(new SelectListItem
+    {
+        Text = "B10",
+        Value = "B10"
+    });
+    listClass.Add(new SelectListItem
+    {
+        Text = "B14",
+        Value = "B14",
+        Selected = true
+    });
+    listClass.Add(new SelectListItem
+    {
+        Text = "B16",
+        Value = "B16"
+    });
+}
+@{
+    List<SelectListItem> listFaculty = new List<SelectListItem>();
+    listFaculty.Add(new SelectListItem
+    {
+        Text = "HienPA",
+        Value = "HienPA"
+    });
+    listFaculty.Add(new SelectListItem
+    {
+        Text = "Jayalakshmi",
+        Value = "Jayalakshmi",
+        Selected = true
+    });
+    listFaculty.Add(new SelectListItem
+    {
+        Text = "John Carter",
+        Value = "John Carter"
+    });
+}
+
+@{
+    List<SelectListItem> listSubject = new List<SelectListItem>();
+    listSubject.Add(new SelectListItem
+    {
+        Text = "AdvanceJava",
+        Value = "AdvanceJava"
+    });
+    listSubject.Add(new SelectListItem
+    {
+        Text = "Core Java",
+        Value = "Core Java",
+        Selected = true
+    });
+    listSubject.Add(new SelectListItem
+    {
+        Text = "Programming C#",
+        Value = "Programming C#"
+    });
+}
+@{
+    List<SelectListItem> listStatus = new List<SelectListItem>();
+    listStatus.Add(new SelectListItem
+    {
+        Text = "done",
+        Value = "done"
+    });
+    listStatus.Add(new SelectListItem
+    {
+        Text = "up coming",
+        Value = "up coming",
+        Selected = true
+    });
+    listStatus.Add(new SelectListItem
+    {
+        Text = "on going",
+        Value = "on going"
+    });
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>TableExam</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.subject, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.startTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.startTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.startTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.examDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.examDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.examDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.duration, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.duration, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.duration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.classRoom, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.classRoom, listClass, "-- Select Status --")
+                @Html.ValidationMessageFor(model => model.classRoom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.faculty, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.faculty, listFaculty, "-- Select Status --")
+                @Html.ValidationMessageFor(model => model.faculty, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.status, listStatus, "-- Select Status --")
+                @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

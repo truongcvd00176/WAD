@@ -1,0 +1,2 @@
+C:\Users\Dong Marion\source\repos\AWSAD2\MyBackgroundTask\MyBackgroundTask.csproj;x86
+C:\Users\Dong Marion\source\repos\AWSAD2\MyWifiChecker\MyWifiChecker.csproj;x86
